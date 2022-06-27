@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+
+<tiles-definitions>  
+ 
+   <!-- Base Definition -->
+   <definition name="base-definition" 
+       template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />  
+     
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
+   </definition>  
+ 
+ <definition name="base-definition_not_header" 
+       template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="" />  
+     
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="" />  
+   </definition> 
+   
+ 
+   <!-- Home Page -->
+   <definition name="home" extends="base-definition">  
+       <put-attribute name="title" value="Welcome" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
+   </definition>  
+
+   <!-- Product Page -->
+   <definition name="products" extends="base-definition">  
+       <put-attribute name="title" value="Products" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/products.jsp" />  
+   </definition>  
+      
+   <!-- Contact-us Page -->
+   <definition name="contactus" extends="base-definition">  
+       <put-attribute name="title" value="Contact Us" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contactus.jsp" />  
+   </definition>  
+   
+   <definition name="login" extends="base-definition_not_header">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/login.jsp" />  
+   </definition>  
+   
+      <definition name="userslist" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/userslist.jsp" />  
+   </definition> 
+   
+   <definition name="accessDenied" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/accessDenied.jsp" />  
+   </definition> 
+   
+   <definition name="registration" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/registration.jsp" />  
+   </definition> 
+   
+   <definition name="authheader" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/authheader.jsp" />  
+   </definition>
+   
+   <definition name="registrationsuccess" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/registrationsuccess.jsp" />  
+   </definition> 
+   
+   
+   <definition name="index" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/index.jsp" />  
+   </definition> 
+   
+   <definition name="StudentReports" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/StudentReports.jsp" />  
+   </definition>
+   
+   <definition name="StudentInfo" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/StudentInfo.jsp" />  
+   </definition>
+   
+   <definition name="StudentCreationForm" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/StudentCreationForm.jsp" />  
+   </definition>
+   
+    
+    
+    
+   
+ <definition name="Gmap_Details_Fetching" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/Gmap_Details_Fetching.jsp" />  
+   </definition> 
+   
+    <definition name="StudentCreate" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/StudentCreate.jsp" />  
+   </definition> 
+   
+   <definition name="PrintReceiptDetails" extends="base-definition_not_header">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/PrintReceiptDetails.jsp" />  
+   </definition>
+   
+    <definition name="ApprovalAuthorityDashboard" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/ApprovalAuthorityDashboard.jsp" />  
+   </definition> 
+   
+   <definition name="Promotion_Module" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/Promotion_Module.jsp" />  
+   </definition>
+   
+   
+   <definition name="Admission_Module" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/Admission_Module.jsp" />  
+   </definition> 
+   
+   <definition name="Student_Module_Report" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/Student_Module_Report.jsp" />  
+   </definition> 
+   
+   <definition name="Student_Attendence_Details" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/Student_Attendence_Details.jsp" />  
+   </definition> 
+   
+     <definition name="searchforstudent" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/searchforstudent.jsp" />  
+   </definition> 
+   
+     <definition name="searchforstudent_admin" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/searchforstudent_admin.jsp" />  
+   </definition> 
+   
+      <definition name="student_promotionreset_view" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/student_promotionreset_view.jsp" />  
+   </definition> 
+    <definition name="student_admission_list" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/student_admission_list.jsp" />  
+   </definition> 
+    <definition name="student_examfeenotpaid_list" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/student_examfeenotpaid_list.jsp" />  
+   </definition>
+   
+    <definition name="student_examandtution_feepaid_list" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/student_examandtution_feepaid_list.jsp" />  
+   </definition>
+     <definition name="homepage" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/homepage.jsp" />  
+   </definition>
+    <definition name="feepaid_dailywise_list" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/feepaid_dailywise_list.jsp" />  
+   </definition>
+   <definition name="hostelDetails_DailyWise" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/hostelDetails_DailyWise.jsp" />  
+   </definition>
+   
+    <definition name="deleteforstudent_admin" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/deleteforstudent_admin.jsp" />  
+   </definition>
+   
+     <definition name="searchforstudent_user" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/searchforstudent_user.jsp" />  
+   </definition>
+   
+   <definition name="searchformoneytransaction_admin" extends="base-definition">  
+       <put-attribute name="title" value="LOGIN" />  
+       <put-attribute name="body" value="/WEB-INF/views/searchformoneytransaction_admin.jsp" />  
+   </definition>
+   
+</tiles-definitions>

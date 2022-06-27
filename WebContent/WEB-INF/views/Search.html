@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Places Search Box</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+     
+      form { width: 300px; float: left; }
+      fieldset { width: 320px; margin-top: 20px}
+      fieldset label { display: block; margin: 0.5em 0 0em; }
+      fieldset input { width: 95%; }
+      
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 70%;
+      background-color: grey;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* TODO: Step 4A1: Make a generic sidebar */
+    /* Styling for an info pane that slides out from the left. 
+     * Hidden by default. */
+    #panel {
+      height: 100%;
+      width: 33%;
+      background-color: white;
+      position: fixed;
+      z-index: 1;
+      overflow-x: hidden;
+      transition: all .2s ease-out;
+      top: 90px;
+    }
+
+    .open {
+      width: 250px;
+    }
+
+    /* Styling for place details */
+    .hero {
+      width: 100%;
+      height: auto;
+      max-height: 166px;
+      display: block;
+    }
+
+    .place,
+    p {
+      font-family: 'open sans', arial, sans-serif;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .details {
+      color: darkslategrey;
+    }
+
+    a {
+      text-decoration: none;
+      color: cadetblue;
+    }
+	
+	 #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 12px;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    width: 400px;
+    border: #e0e0e0 1px solid;
+  }
+  .pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+  }
+
+  #pac-container {
+    padding-bottom: 2px;
+    margin-right: 12px;
+  }
+  #label {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 6px 12px;
+  }
+   .map{ float: right; }
+   textarea {
+   clear: left;
+    min-width: 223px;
+    max-width: 324px;
+    min-height: 46px;
+    max-height: 39px;
+}
+td
+{
+white-space: nowrap;
+}
+    </style>
+  </head>
+  <body>
+  <div id="panel">
+   <form>
+      
+ <h3>Address-Details</h3>
+      
+     <table> 
+     <tr>
+        <td>
+
+       
+
+        <label>Country</label></td>
+        <td>
+        <input name="country" type="text" value=""></td>
+        </tr>
+        <tr>
+<td>
+        <label>City Name</label></td>
+        <td>
+        <input name="location" type="text" value="" id="location"></td>
+        </tr>
+        
+        <tr>
+<td>
+        <label>Area Name</label></td>
+        <td>
+        <input name="street_number" type="text" value=""></td>
+        </tr>
+        
+        <tr>
+        <td>
+
+        <label>Locality/Streat</label></td>
+        <td>
+        <input name="locality" type="text" value=""></td>
+        </tr>
+<tr>
+<td>
+        <label>Name</label></td>
+        <td>
+        <input name="name" type="text" value=""></td>
+</tr>
+<tr>
+<td>
+        <label>Mobile Number</label></td>
+        <td>
+        <input name="point_of_interest" type="text" value=""></td>
+        <tr>
+<td>
+        <label>Latitude</label></td>
+        <td>
+        <input name="lat" type="text" value="" id="lat"></td>
+        <tr>
+        <td>
+
+        <label>Longitude</label></td>
+        <td>
+        <input name="lng" type="text" value="" id="lng"></td>
+        </tr>
+
+        <tr>
+        <td>
+
+        <label>School Type</label></td>
+        <td>
+        <input name="location_type" type="text" value=""></td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        <tr>
+        <td>
+
+        <label>Postal Code</label></td>
+        <td>
+        <input name="postal_code" type="text" value=""></td>
+        </tr>
+        
+        
+        <tr>
+<td>PHOTO</td>
+      <td>  <input type="file"	name="shop_image[0]" required="required" id="fileName" accept=".jpg,.jpeg,.png" onchange="validateFileType_onchange()" ></td>
+        </tr>
+<tr>
+        <td>
+
+        <label> Address</label></td>
+        <td>
+        <textarea rows = "5" cols = "50" name = "description">
+        </textarea></td>
+        </tr>
+       </table>  
+
+        
+     <input type="submit" value="POSTING"> 
+    </form>
+    </div>
+   
+    <div class="pac-card" id="pac-card">
+      
+        <div id="label">
+          LOCATION SEARCH
+           
+      </div>
+      
+      <div id="pac-container">
+        <input id="pac-input" type="text"
+            placeholder="Enter a location"><div id="dvDistanceDuration" style="color: red"></div>
+      </div>
+    </div>
+    
+
+    <div id="map" class="pac-card" id="pac-card"></div>
+   
+    <script>
+      // This example adds a search box to a map, using the Google Place Autocomplete
+      // feature. People can enter geographical searches. The search box will return a
+      // pick list containing a mix of places and predicted search terms.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 16,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+      //  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+          //  marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }).addListener('click', function() {
+            	//alert(place.address_components[0].long_name+","+place.address_components[1].long_name+","+place.address_components[2].long_name);
+            //	alert(place.address_components[0].short_name +","+place.address_components[1].short_name +","+place.address_components[2].short_name );
+            	 bindDataToForm(place.name,place.geometry.location.lat(),place.geometry.location.lng())
+              }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+      function bindDataToForm(address,lat,lng){
+    	   document.getElementById('location').value = address;
+    	   document.getElementById('lat').value = lat;
+    	   document.getElementById('lng').value = lng;
+    	}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAohX3Oyo_v6y9YXoG80we44t144PpEf8Q&libraries=places&callback=initAutocomplete"
+         async defer></script>
+  </body>
+</html>
